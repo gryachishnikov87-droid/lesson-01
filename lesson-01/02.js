@@ -6,10 +6,9 @@
 */
 
 // your code
-let factorial = 1;
 let n = 10;
-
-while (number > 1) {
+let factorial = 1;
+while (n > 1) {
   factorial *= n;
   n--;
 }
