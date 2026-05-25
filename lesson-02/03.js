@@ -10,17 +10,17 @@ let grade
 
 
 if (score >= 90 && score <= 100) {
-  grade = 'a'
+  grade = 'A'
 } else if (score >= 80 && score <= 89) {
-  grade = 'b'
+  grade = 'B'
 } else if (score >= 70 && score <= 79) {
-  grade = 'c'
+  grade = 'C'
 } else if (score >= 50 && score <= 69) {
-  grade = 'd'
+  grade = 'D'
 } else if (score >= 0 && score <= 49) {
-  grade = 'f'
+  grade = 'F'
 } else {
   grade = 'Некорректный балл'
 }
 
-console.log(grade) // Выведет: c
+console.log(grade) // Выведет: C
