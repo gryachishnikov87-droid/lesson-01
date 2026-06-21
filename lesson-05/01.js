@@ -19,7 +19,7 @@ const game = {
     if (this.resources.hasOwnProperty(resource)) {
       this.resources[resource] += amount;
     } else {
-      console.log("invalid resource");
+      console.log("Invalid resource"); 
     }
   }
 };
