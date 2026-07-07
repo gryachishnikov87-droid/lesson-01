@@ -12,12 +12,12 @@
 🧙‍♂️ Совет: обратите внимание на управление индексом текущего изображения — это ключ к успешному переключению изображений.
 */
 
+
 const WEB_TECH_IMAGES = [
   'https://production-it-incubator.s3.eu-central-1.amazonaws.com/file-manager/Image/32f74d50-68d0-46aa-b035-7b3a5300d2c1_js-magic-logo.jpg',
   'https://production-it-incubator.s3.eu-central-1.amazonaws.com/file-manager/Image/c8a1f4a6-1337-4899-bdfd-a8c9c7bb806a_css-magic-logo.jpg',
   'https://production-it-incubator.s3.eu-central-1.amazonaws.com/file-manager/Image/784380b9-6937-42a6-bdfe-869835820234_html-magic-logo.jpg',
 ]
-
 
 // 2. Находим элементы на странице
 const imageElement = document.getElementById('web-tech-image');
@@ -27,25 +27,25 @@ const nextButton = document.getElementById('next-button');
 // 3. Переменная для текущего индекса
 let currentIndex = 0;
 
-// 4. Функция обновления картинки
+// 4. Функция обновления картинки (исправлено на WEB_TECH_IMAGES)
 function updateImage() {
-  imageElement.src = web_tech_images[currentIndex];
+  imageElement.src = WEB_TECH_IMAGES[currentIndex];
 }
 
-// 5. Обработчик клика на кнопку "next"
+// 5. Обработчик клика на кнопку "next" (исправлено на WEB_TECH_IMAGES)
 nextButton.addEventListener('click', () => {
   currentIndex++;
-  if (currentIndex >= web_tech_images.length) {
+  if (currentIndex >= WEB_TECH_IMAGES.length) {
     currentIndex = 0;
   }
   updateImage();
 });
 
-// 6. Обработчик клика на кнопку "prev"
+// 6. Обработчик клика на кнопку "prev" (исправлено на WEB_TECH_IMAGES)
 prevButton.addEventListener('click', () => {
   currentIndex--;
   if (currentIndex < 0) {
-    currentIndex = web_tech_images.length - 1;
+    currentIndex = WEB_TECH_IMAGES.length - 1;
   }
   updateImage();
 });
