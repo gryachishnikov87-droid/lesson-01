@@ -25,6 +25,10 @@
 - 🧙‍♂️ Для выполнения этого задания нужно познакомиться с браузерными функциями setInterval (https://doka.guide/js/setinterval/) и clearInterval(https://doka.guide/js/clearinterval/). Они очень похоже на setTimeout и clearTimeout.
  */
 
+
+cancelButton.addEventListener('click', () => {
+  // your code
+})
 const startButton = document.getElementById('start')
 const cancelButton = document.getElementById('cancel')
 const countdownDisplay = document.getElementById('countdown')
@@ -33,11 +37,35 @@ let isTimerStarted = false
 let timerId
 
 startButton.addEventListener('click', () => {
-  let counter = 3
+  // Если таймер уже запущен, ничего не делаем (защита от повторных нажатий)
+  if (isTimerStarted) return
 
-  // your code
+  let counter = 3
+  isTimerStarted = true
+  
+  // Отображаем начальную цифру 3 немедленно
+  countdownDisplay.textContent = counter
+
+  // Запускаем интервал, который будет срабатывать каждую секунду
+  timerId = setInterval(() => {
+    counter--
+
+    if (counter > 0) {
+      countdownDisplay.textContent = counter
+    } else {
+      // Когда дошли до 0, останавливаем таймер и показываем ракету
+      clearInterval(timerId)
+      isTimerStarted = false
+      countdownDisplay.textContent = '🚀'
+    }
+  }, 1000)
 })
 
 cancelButton.addEventListener('click', () => {
-  // your code
+  // Отмена работает только тогда, когда таймер запущен
+  if (isTimerStarted) {
+    clearInterval(timerId)
+    isTimerStarted = false
+    countdownDisplay.textContent = 'Отменено'
+  }
 })
