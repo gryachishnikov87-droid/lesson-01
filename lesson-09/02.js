@@ -25,43 +25,30 @@
 - 🧙‍♂️ Для выполнения этого задания нужно познакомиться с браузерными функциями setInterval (https://doka.guide/js/setinterval/) и clearInterval(https://doka.guide/js/clearinterval/). Они очень похоже на setTimeout и clearTimeout.
  */
 
-Cypress.on('uncaught:exception', (err, runnable) => {
-  // Возвращаем false, чтобы Cypress не валил тесты из-за этой ошибки
-  if (err.message.includes("Failed to execute 'matches' on 'Element'")) {
-    return false
-  }
-  // Позволяем Cypress реагировать на другие критические ошибки, если они возникнут
-  return true
-})
-
-cancelButton.addEventListener('click', () => {
-  // your code
-})
+// 1. Сначала находим все элементы в DOM
 const startButton = document.getElementById('start')
 const cancelButton = document.getElementById('cancel')
 const countdownDisplay = document.getElementById('countdown')
 
+// 2. Объявляем переменные состояния таймера
 let isTimerStarted = false
 let timerId
 
+// 3. Добавляем обработчик для кнопки "Старт"
 startButton.addEventListener('click', () => {
-  // Если таймер уже запущен, ничего не делаем (защита от повторных нажатий)
   if (isTimerStarted) return
 
   let counter = 3
   isTimerStarted = true
   
-  // Отображаем начальную цифру 3 немедленно
   countdownDisplay.textContent = counter
 
-  // Запускаем интервал, который будет срабатывать каждую секунду
   timerId = setInterval(() => {
     counter--
 
     if (counter > 0) {
       countdownDisplay.textContent = counter
     } else {
-      // Когда дошли до 0, останавливаем таймер и показываем ракету
       clearInterval(timerId)
       isTimerStarted = false
       countdownDisplay.textContent = '🚀'
@@ -69,11 +56,12 @@ startButton.addEventListener('click', () => {
   }, 1000)
 })
 
+// 4. Добавляем ОДИН обработчик для кнопки "Отмена"
 cancelButton.addEventListener('click', () => {
-  // Отмена работает только тогда, когда таймер запущен
   if (isTimerStarted) {
     clearInterval(timerId)
     isTimerStarted = false
     countdownDisplay.textContent = 'Отменено'
   }
 })
+
